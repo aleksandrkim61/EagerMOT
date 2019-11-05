@@ -1,0 +1,6 @@
+*.swp
+*.pyc
+*.idea
+.vscode/*
+*.json
+run_*.txt
