@@ -1,0 +1,18 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: linux-64
+filterpy=1.4.5=pypi_0
+glob2=0.6=py37_1
+imageio=2.6.1=py37_0
+libopencv=3.4.2=hb342d67_1
+more-itertools=7.2.0=py37_0
+numba=0.46.0=py37h962f231_0
+numpy=1.17.2=py37haad9e8e_0
+numpy-base=1.17.2=py37hde5b4d6_0
+nuscenes-devkit=1.1.0=pypi_0
+pillow=6.2.0=py37h34e0f95_0
+pip=19.3.1=py37_0
+pyquaternion=0.9.5=pypi_0
+python=3.7.4=h265db76_1
+scipy=1.2.0=py37h7c811a0_0
+shapely=1.7.0=pypi_0

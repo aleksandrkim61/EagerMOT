@@ -1,0 +1,11 @@
+filterpy==1.4.5
+glob2==0.6
+more-itertools==7.2.0
+numba==0.46.0
+numpy==1.17.2
+nuscenes-devkit==1.1.0
+opencv-python==4.4.0.42
+Pillow==6.2.0
+pyquaternion==0.9.5
+scipy==1.2.0
+Shapely==1.7.0

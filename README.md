@@ -23,6 +23,35 @@ Multi-object tracking (MOT) enables mobile robots to perform well-informed motio
 Our current standings on **KITTI** for 2D MOT on [the official leaderboard](http://www.cvlibs.net/datasets/kitti/eval_tracking.php). For 2D MOTS, see [this page](http://www.cvlibs.net/datasets/kitti/eval_mots_detail.php?result=714550ab34eca8356b2163f8c18c246ec18fbf0b). 
 Our current standings on **NuScenes** for 3D MOT on [the official leaderboard](https://www.nuscenes.org/tracking?externalData=all&mapData=all&modalities=Any).
 
+## How to set up
+Start a new virtual environment
+* if using conda: 
+```
+conda create --name <env> --file requirements_conda.txt
+```
+* if using pip: 
+```
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements_pip.txt
+```
+
+
+
+## How to run
+See `run_tracking.py` for the code that launches tracking. Modify which function that file calls, depending on which dataset you want to run. See nearby comments for instructions.
+```py
+if __name__ == "__main__":
+    # choose which one to run, comment out the other one
+    run_on_nuscenes()  
+    run_on_kitti()
+```
+Start the script with `$python run_tracking.py`. Check the code itself to see what is being called. I recommend following function calls to explore how the code is structured.
+
+Overall, the code was written to allow customization and easy experimentation instead of optimizing for performance. 
+
+Soon, I am looking to extract the data loading module and push my visualization code into a separate repo to use for other projects.
+
 ## Please cite our paper if you find the code useful
 ```
 @inproceedings{Kim21ICRA,
