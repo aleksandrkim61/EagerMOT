@@ -1,38 +1,45 @@
-# 3D Multi-Object Tracking and Segmentation from 3D detections and 2D segmentations
-### [Work in progress]
-#### The project was done as a guided research module at TUM
+# EagerMOT: 3D Multi-Object Tracking via Sensor Fusion
+## Read our ICRA 2021 paper [here](https://arxiv.org/abs/2104.14682).
 
-An online method to combine 3D bounding box detections and 2D segmentation masks to perform Multi-Object Tracking and Segmentation using point fusion to recover missing masks and description vectors to resolve ambiguities in association.
-The repo also includes visualization code to view results of multi object tracking in 3D and resulting segmentation masks projected onto original images.
+### Check out the [3 minute video](https://youtu.be/RX4xDQ0YXxE) for the quick intro or [the full presentation video](https://youtu.be/k8pKpvbenoM) for more details.
 
-Inputs to the pipeline: 3D bounding box detections, stereo images, 2D segmenation masks and their description vectors.
+This repo contains code for our ICRA 2021 paper. Benchmark results can be fully reproduced with minimal work, only need to edit data location variables. If desired, our ablation results can also be reproduced by need more adjustments. 
+An earlier version of this paper has also appeared as a short [4-page paper](https://motchallenge.net/workshops/bmtt2020/papers/EagerMOT.pdf) at the [CVPR 2020 MOTChallenge Workshop](https://motchallenge.net/workshops/bmtt2020/).
 
-Source of 3D detections: [Point-RCNN](https://github.com/sshaoshuai/PointRCNN)
-Source of 2D segmentations and description: [Track-RCNN](https://www.vision.rwth-aachen.de/page/mots)
+---
 
-By combining these two signals, performance on both tasks has improved over other methods using a single source:
-##### Multi-Object Tracking (MOT): 
+Improve your online 3D multi-object tracking performance by using 2D detections to support tracking when 3D association fails. The method adds minimal overhead, does not rely on dedicated hardware on any particular sensor setup. The current Python implementation run at **90 FPS** on KITTI data and can definitely be optimized for actual deployment.
+
+The framework is flexible to work with any 3D/2D detection sources (we used only off-the-shelf models) and can be extended to other tracking-related tasks, e.g. MOTS.
+
+![Visual](figures/test_visualization.gif)
+
+
+## Abstract
+Multi-object tracking (MOT) enables mobile robots to perform well-informed motion planning and navigation by localizing surrounding objects in 3D space and time. Existing methods rely on depth sensors (e.g., LiDAR) to detect and track targets in 3D space, but only up to a limited sensing range due to the sparsity of the signal. On the other hand, cameras provide a dense and rich visual signal that helps to localize even distant objects, but only in the image domain. In this paper, we propose EagerMOT, a simple tracking formulation that eagerly integrates all available object observations from both sensor modalities to obtain a well-informed interpretation of the scene dynamics. Using images, we can identify distant incoming objects, while depth estimates allow for precise trajectory localization as soon as objects are within the depth-sensing range. With EagerMOT, we achieve state-of-the-art results across several MOT tasks on the KITTI and NuScenes datasets.
+
+## Benchmark results
+
+Our current standings on **KITTI** for 2D MOT on [the official leaderboard](http://www.cvlibs.net/datasets/kitti/eval_tracking.php). For 2D MOTS, see [this page](http://www.cvlibs.net/datasets/kitti/eval_mots_detail.php?result=714550ab34eca8356b2163f8c18c246ec18fbf0b). 
+Our current standings on **NuScenes** for 3D MOT on [the official leaderboard](https://www.nuscenes.org/tracking?externalData=all&mapData=all&modalities=Any).
+
+## Please cite our paper if you find the code useful
+```
+@inproceedings{Kim21ICRA,
+  title     = {EagerMOT: 3D Multi-Object Tracking via Sensor Fusion},
+  author    = {Kim, Aleksandr, O\v{s}ep, Aljo\v{s}a and Leal-Taix{'e}, Laura},
+  booktitle = {IEEE International Conference on Robotics and Automation (ICRA)},
+  year      = {2021}
+}
+```
+
+
+<!-- ##### 
 | Method | sAMOTA | AMOTA | AMOTP | Single threshold: | MOTA |Recall | Precision | IDs | 
 | :--- | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
 | AB3DMOT | 0.9143 | 0.4400 | 0.8461 |  | 0.8279 | 0.9198 | 0.9357 | 2 |
 | Ours | 0.9240 | 0.4662 | 0.8865 |  | 0.8205 | 0.9338 | 0.9183 | 2 |
-
-Multi-Object Tracking and Segmentation (MOTS):
-| Method | sMOTSA | MOTSA | MOTSP | Recall | Precision | IDs | 
-| :--- | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
-| TrackRCNN | 76.2 | 87.8 | **88.9** | 90.6 | **98.2** | 93 |
-| Ours | **77.6** | **89.9** | 86.8 | 93.1 | 97.5 | 72 |
-|  |
-| constr p2p -> p2p | **77.6** | **89.9** | 86.7 | 93.2 | 97.5 | 70 |
-| 60pts -> 30pts | 77.2 | 89.6 | 86.7 | **93.4** | 96.9 | 68 |
-| no early report | 77.2 | 89.4 | 86.8 | 92.3 | 97.7 | **58** |
-| no point masks | 76.7 | 88.6 | 87 | 91.6 | 97.9 | 79 |
-| No association vectors | 77.1 | 89.4 | 86.8 | 92.8 | 97.4 | 81 |
-| Max age = 6 | 77.2 | 89.6 | 86.7 | 93.3 | 97.1 | 76 |
-| 3D Iou 0.1 | 77.4 | 89.8 | 86.8 | 93.2 | 97.4 | 73 |
-|  |
-| point masks instead of seg | 55.2 | 70.4 | 79.5 | 73.6 | 96.2 | 32 |
-
+ -->
 
 
 
