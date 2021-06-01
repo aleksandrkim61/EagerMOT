@@ -24,7 +24,18 @@ Our current standings on **KITTI** for 2D MOT on [the official leaderboard](http
 Our current standings on **NuScenes** for 3D MOT on [the official leaderboard](https://www.nuscenes.org/tracking?externalData=all&mapData=all&modalities=Any).
 
 ## How to set up
-Start a new virtual environment
+
+### Download 3D and 2D detections, which ones to download depends on what you want to run:
+* KITTI 2D MOTSFusion detections/segmentations from https://github.com/tobiasfshr/MOTSFusion
+* KITTI 2D TrackRCNN detections/segmentations https://github.com/VisualComputingInstitute/TrackR-CNN
+* The 3D AB3DMOT detections can also be downloaded from the original source https://github.com/xinshuoweng/AB3DMOT, but their structure has not changed and is not compatible with this repo.
+* KITTI 3D PointGNN, NuScenes 3D CenterPoint, NuScenes 2D detections using an [MMDetection](https://github.com/open-mmlab/mmdetection) model from the [drive](https://drive.google.com/drive/folders/1MpAa9YErhAZNEJjIrC4Ky21YfNj2jatM?usp=sharing)
+
+Our benchmark results were achieved with PointGNN + (MOTSFusion+RRC) for KITTI and CenterPoint + MMDetectionCascade for NuScenes.
+
+Unzip detections anywhere you want and provide the path to the root method folder in the `inputs/utils.py` file. 
+
+### Set up a virtual environment
 * if using conda: 
 ```
 conda create --name <env> --file requirements_conda.txt
