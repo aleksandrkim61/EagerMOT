@@ -27,7 +27,11 @@ Our current standings on **NuScenes** for 3D MOT on [the official leaderboard](h
 
 ## How to set up
 
-Download official NuScenes and KITTI data if you plan on running tracking on them. Change the paths to that data in `configs/local_variables.py`
+Download official NuScenes and KITTI data if you plan on running tracking on them. Change the paths to that data in `configs/local_variables.py`. 
+
+Also set a path to a working directory for each dataset - all files produced by EagerMOT will be saved in that directory, e.g. fused instances, tracking results. A subfolder will be created for each dataset for each split, for example, if the working directory is `/workspace/kitti`, then `/workspace/kitti/training` and `/workspace/kitti/testing` will be used for each data split. The split to be run is also specified in `local_variables.py`. For NuScenes, the version of the dataset (`VERSION = "v1.0-trainval"`) also has to be modified in `run_tracking.py` when switching between train/test. 
+
+If running on KITTI, download `ego_motion.zip` from the [drive](https://drive.google.com/drive/folders/1MpAa9YErhAZNEJjIrC4Ky21YfNj2jatM?usp=sharing) and unzip it into the KITTI working directory specified above (either training or testing). NuScenes data is already in world coordinates, so no need to ego motion estimates.
 
 ### Download 3D and 2D detections, which ones to download depends on what you want to run:
 * KITTI 2D MOTSFusion detections/segmentations from https://github.com/tobiasfshr/MOTSFusion
