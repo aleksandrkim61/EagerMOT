@@ -27,6 +27,8 @@ Our current standings on **NuScenes** for 3D MOT on [the official leaderboard](h
 
 ## How to set up
 
+Download official NuScenes and KITTI data if you plan on running tracking on them. Change the paths to that data in `configs/local_variables.py`
+
 ### Download 3D and 2D detections, which ones to download depends on what you want to run:
 * KITTI 2D MOTSFusion detections/segmentations from https://github.com/tobiasfshr/MOTSFusion
 * KITTI 2D TrackRCNN detections/segmentations https://github.com/VisualComputingInstitute/TrackR-CNN
