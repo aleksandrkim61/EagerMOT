@@ -43,6 +43,8 @@ Our benchmark results were achieved with PointGNN + (MOTSFusion+RRC) for KITTI a
 
 Unzip detections anywhere you want and provide the path to the root method folder in the `inputs/utils.py` file. 
 
+If using MOTSFusion input, also run the `adapt_kitti_motsfusion_input.py` script to copy the necessary detection information to its segmentation file.  
+
 ### Set up a virtual environment
 * if using conda: 
 ```
