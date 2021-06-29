@@ -61,7 +61,6 @@ def perform_tracking_full(dataset, params, target_sequences=[], sequences_to_exc
         total_time_tracking += run_info["total_time_mot"]
         total_time_reporting += run_info["total_time_reporting"]
         total_frame_count += len(sequence.frame_names)
-        break
 
     if total_frame_count == 0:
         return variant, run_info
