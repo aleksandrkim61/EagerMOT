@@ -35,7 +35,7 @@ SEGMENTATIONS_TRACKRCNN_DIR = MOUNT_PATH + "/storage/trackrcnn/" + SPLIT
 MOTSFUSION_RRC_DIR = MOUNT_PATH + "/storage/detections_segmentations_RRC_BB2SegNet/" + SPLIT
 MOTSFUSION_TRACKRCNN_DIR = MOUNT_PATH + "/storage/detections_segmentations_trackrcnn_BB2SegNet/" + SPLIT
 DETECTIONS_MMDETECTION_CASCADE_NUIMAGES_NUSCENES = MOUNT_PATH + \
-    "/storage/mmdetection_cascade_x101/" + SPLIT
+    "/storage/mmdetection_cascade_x50_coco/" + SPLIT
 DETECTIONS_MMDETECTION_CASCADE_NUIMAGES_KITTI = MOUNT_PATH + \
     "/storage/mmdetection_cascade_x101_kitti/" + SPLIT
 
