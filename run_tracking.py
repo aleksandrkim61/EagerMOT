@@ -172,5 +172,5 @@ def run_on_kitti():
 
 
 if __name__ == "__main__":
-    # run_on_nuscenes()
+    #run_on_nuscenes()
     run_on_kitti()

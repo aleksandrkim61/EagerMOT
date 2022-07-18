@@ -4,3 +4,5 @@
 .vscode/*
 *.json
 run_*.txt
+detections/centerpoint_voxelnet_e20.pth
+detections/faster_rcnn_r50_fpn_1x_coco_20200130-047c8118.pth
