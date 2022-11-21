@@ -66,9 +66,22 @@ source env/bin/activate
 pip install -r requirements_pip.txt
 ```
 
+## How to launch this code
+Overall, the code was written to allow customization and easy experimentation instead of optimizing for performance. 
 
+Check the code itself to see what is being called. I recommend following function calls to explore how the code is structured.
 
-## How to run
+Soon, I am looking to extract the data loading module and push my visualization code into a separate repo to use for other projects.
+
+### Visualization
+See `visualize.py` for the code - it uses Open3D to render tracking frames consecutively. The code should be relatively easy to understand, start from the top-level calling code located at the bottom.
+
+Start the script with:
+```py
+python visualize.py /storage/slurm/polarmot/tracking_result.json -suffix _default
+```
+
+### Tracking
 See `run_tracking.py` for the code that launches tracking. Modify which function that file calls, depending on which dataset you want to run. See nearby comments for instructions.
 ```py
 if __name__ == "__main__":
@@ -76,11 +89,7 @@ if __name__ == "__main__":
     run_on_nuscenes()  
     run_on_kitti()
 ```
-Start the script with `$python run_tracking.py`. Check the code itself to see what is being called. I recommend following function calls to explore how the code is structured.
-
-Overall, the code was written to allow customization and easy experimentation instead of optimizing for performance. 
-
-Soon, I am looking to extract the data loading module and push my visualization code into a separate repo to use for other projects.
+Start the script with `$python run_tracking.py`. 
 
 ## Please cite our paper if you find the code useful
 ```
