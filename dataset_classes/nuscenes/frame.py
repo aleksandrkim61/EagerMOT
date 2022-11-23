@@ -10,7 +10,7 @@ from pyquaternion import Quaternion
 from inputs.detection_2d import Detection2D
 from inputs.bbox import Bbox2d, Bbox3d
 from nuscenes.nuscenes import NuScenes
-from nuscenes.utils.data_classes import LidarPointCloud
+from nuscenes.utils.data_classes import LidarPointCloud, Box
 from nuscenes.eval.common.utils import quaternion_yaw
 from utils.utils_geometry import clip_bbox_to_four_corners
 
@@ -80,12 +80,15 @@ class MOTFrameNuScenes(MOTFrame):
 
     def bbox_3d_annotation(self, annotation_token: str, world: bool = False) -> Optional[Bbox3d]:  # Box
         bbox_nu = self.nusc.get_box(annotation_token)  # annotations are in world coordinates
+        instance_id = hash(annotation_token)
+        return self.bbox_3d_from_nu(bbox_nu, instance_id, world)
+
+    def bbox_3d_from_nu(self, bbox_nu: Box, instance_id: int, world: bool = False) -> Optional[Bbox3d]:  # Box
         if not world:
             bbox_nu = self.transformation.ego_box_from_world(bbox_nu, self.data)
         bbox_nu.score = 1.0
         bbox_nu.velocity = [1.0, 1.0]
 
-        instance_id = hash(annotation_token)
         name_parts = bbox_nu.name.split(".")
         bbox_class = name_parts[1] if len(name_parts) > 1 else name_parts[0]
         if bbox_class in nu_classes.ALL_NUSCENES_CLASS_NAMES:
